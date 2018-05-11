@@ -38,3 +38,25 @@ function dateRender () {
 };
 
 dateRender();
+
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+        let paragraph = document.querySelector('p');
+        paragraph.innerHTML = "Min: " + weatherResponse.DailyForecasts[i].Temperature.Minimum.Value + "°C " + " Max: " + weatherResponse.DailyForecasts[i].Temperature.Maximum.Value + "°C"
+        const weatherTag = document.getElementById("icons");
+        if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Mostly sunny") {
+            weatherTag.className = "sunny";
+        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Intermittent clouds") {
+            weatherTag.className = "cloudy";
+        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Partly sunny w/ showers") {
+            weatherTag.className = "cloudy";
+        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Mostly cloudy w/ showers") {
+            weatherTag.className = "cloudy";
+        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Showers") {
+            weatherTag.className = "rainy";
+        } else 
+            console.log(weatherResponse.DailyForecasts[i].Day.IconPhrase)
+        });
+
+};
