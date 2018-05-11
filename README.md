@@ -1,1 +1,1 @@
-# weather-application
+# Get Your Umbrella - Chrome Extension
