@@ -26,3 +26,15 @@ const weather = new XMLHttpRequest();
 weather.open("GET", "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + cityResponse.Key + "?apikey=" + accuWeatherKey + "&details=true&metric=true ", false);
 weather.send(null);
 let weatherResponse = JSON.parse(weather.response);
+
+
+function dateRender () {
+    weatherResponse.DailyForecasts.forEach(function(element) {
+        let button = document.createElement("button");
+        button.className = 'dayButton';
+        body.appendChild(button);
+        button.innerHTML = element.Date.split("-").join(",").split("T")[0].split(",")[2];
+    });
+};
+
+dateRender();
