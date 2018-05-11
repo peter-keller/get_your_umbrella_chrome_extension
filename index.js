@@ -13,3 +13,9 @@ coordinates.open('GET', "http://api.ipstack.com/check?access_key=" + ipStackKey,
 coordinates.send();
 let ipStackResponse = JSON.parse(coordinates.response);
 let locationCoordinates = ipStackResponse.latitude + "%2C" + ipStackResponse.longitude;
+
+
+const getCity = new XMLHttpRequest();
+getCity.open('GET', "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=" + accuWeatherKey + "&q=" + locationCoordinates + "&details=true&toplevel=true", false);
+getCity.send();
+let cityResponse = JSON.parse(getCity.response)
