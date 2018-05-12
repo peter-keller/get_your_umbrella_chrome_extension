@@ -40,7 +40,7 @@ function dateRender () {
 dateRender();
 
 
-function createIcon(minimum, maximum) {
+function createTempIcon(minimum, maximum) {
     let paragraph = document.getElementById('temperature');
     let tempIcon = document.createElement('img');
     tempIcon.setAttribute("src", "thermometer.png")
@@ -48,10 +48,20 @@ function createIcon(minimum, maximum) {
     paragraph.appendChild(tempIcon)
 }
 
+function createRainIcon(value, probability) {
+    let rainParagraph = document.getElementById("rain");
+    let rainIcon = document.createElement("img");
+    rainIcon.setAttribute("src", "rain.png");
+    rainParagraph.innerHTML = "Value: " + value + " mm   Probability: " + probability + "%";
+    rainParagraph.appendChild(rainIcon);
+}
+
+
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
-        createIcon(weatherResponse.DailyForecasts[i].Temperature.Minimum.Value, weatherResponse.DailyForecasts[i].Temperature.Maximum.Value)
-        console.log(weatherResponse.DailyForecasts[i].Day.Rain.Value);
+        createTempIcon(weatherResponse.DailyForecasts[i].Temperature.Minimum.Value, weatherResponse.DailyForecasts[i].Temperature.Maximum.Value)
+        createRainIcon(weatherResponse.DailyForecasts[i].Day.Rain.Value, weatherResponse.DailyForecasts[i].Day.RainProbability)
+        console.log(weatherResponse.DailyForecasts[i].Day)
         iconSorter(weatherResponse.DailyForecasts[i].Day.IconPhrase)
     });
 
