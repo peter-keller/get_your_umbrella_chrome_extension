@@ -4,8 +4,8 @@ const body = document.querySelector("body");
 const buttons = document.getElementsByClassName("dayButton");
 
 
-const ipStackKey = "";
-const accuWeatherKey = "";
+const ipStackKey = "5bbd3d01ffb7673da9dcd7dc22d800f3";
+const accuWeatherKey = "9AI2zAYeN5HsQmwlLyHxvtS4RPTOK1Cb";
 
 
 const coordinates = new XMLHttpRequest();
@@ -40,23 +40,34 @@ function dateRender () {
 dateRender();
 
 
+function createIcon(minimum, maximum) {
+    let paragraph = document.getElementById('temperature');
+    let tempIcon = document.createElement('img');
+    tempIcon.setAttribute("src", "thermometer.png")
+    paragraph.innerHTML =  "Min: " + minimum + "°C " + " Max: " + maximum + "°C"
+    paragraph.appendChild(tempIcon)
+}
+
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
-        let paragraph = document.querySelector('p');
-        paragraph.innerHTML = "Min: " + weatherResponse.DailyForecasts[i].Temperature.Minimum.Value + "°C " + " Max: " + weatherResponse.DailyForecasts[i].Temperature.Maximum.Value + "°C"
-        const weatherTag = document.getElementById("icons");
-        if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Mostly sunny") {
-            weatherTag.className = "sunny";
-        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Intermittent clouds") {
-            weatherTag.className = "cloudy";
-        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Partly sunny w/ showers") {
-            weatherTag.className = "cloudy";
-        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Mostly cloudy w/ showers") {
-            weatherTag.className = "cloudy";
-        } else if (weatherResponse.DailyForecasts[i].Day.IconPhrase == "Showers") {
-            weatherTag.className = "rainy";
-        } else 
-            console.log(weatherResponse.DailyForecasts[i].Day.IconPhrase)
-        });
+        createIcon(weatherResponse.DailyForecasts[i].Temperature.Minimum.Value, weatherResponse.DailyForecasts[i].Temperature.Maximum.Value)
+        console.log(weatherResponse.DailyForecasts[i].Day.Rain.Value);
+        iconSorter(weatherResponse.DailyForecasts[i].Day.IconPhrase)
+    });
+
+
+function iconSorter(weather) {
+    const weatherTag = document.getElementById("icons");
+    if (weather == "Mostly sunny") {
+        weatherTag.className = "sunny";
+    } else if (weather == "Intermittent clouds" || "Partly sunny w/ showers") {
+        weatherTag.className = "cloudy";
+    } else if (weather == "Mostly cloudy w/ showers" || "Mostly cloudy") {
+        weatherTag.className = "cloudy";
+    } else if (weather == "Showers") {
+        weatherTag.className = "rainy";
+    } else 
+        console.log(weather)
+    };
 
 };
