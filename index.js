@@ -48,6 +48,7 @@ function createTempIcon(minimum, maximum) {
     paragraph.appendChild(tempIcon)
 }
 
+
 function createRainIcon(value, probability) {
     let rainParagraph = document.getElementById("rain");
     let rainIcon = document.createElement("img");
@@ -57,11 +58,20 @@ function createRainIcon(value, probability) {
 }
 
 
+function createWindIcon(speed, direction) {
+    let windParagraph = document.getElementById("wind");
+    let windIcon = document.createElement("img");
+    windIcon.setAttribute("src", "wind.png");
+    windParagraph.innerHTML = "Speed: " + speed + " km/h   Direction: " + direction;
+    windParagraph.appendChild(windIcon);
+}
+
+
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
         createTempIcon(weatherResponse.DailyForecasts[i].Temperature.Minimum.Value, weatherResponse.DailyForecasts[i].Temperature.Maximum.Value)
         createRainIcon(weatherResponse.DailyForecasts[i].Day.Rain.Value, weatherResponse.DailyForecasts[i].Day.RainProbability)
-        console.log(weatherResponse.DailyForecasts[i].Day)
+        createWindIcon(weatherResponse.DailyForecasts[i].Day.Wind.Speed.Value, weatherResponse.DailyForecasts[i].Day.Wind.Direction.English)
         iconSorter(weatherResponse.DailyForecasts[i].Day.IconPhrase)
     });
 
