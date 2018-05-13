@@ -1,7 +1,8 @@
-'use strict';
+
 
 const body = document.querySelector("body");
 const buttons = document.getElementsByClassName("dayButton");
+const header = document.getElementById("header")
 
 
 const ipStackKey = "5bbd3d01ffb7673da9dcd7dc22d800f3";
@@ -28,12 +29,28 @@ weather.send(null);
 let weatherResponse = JSON.parse(weather.response);
 
 
+const numberToMonth = {
+    "01" : "January",
+    "02" : "February",
+    "03" : "March",
+    "04" : "April",
+    "05" : "May",
+    "06" : "June",
+    "07" : "July",
+    "08" : "August",
+    "09" : "September",
+    "10" : "October",
+    "11" : "November",
+    "12" : "December"
+};
+
+
 function dateRender () {
     weatherResponse.DailyForecasts.forEach(function(element) {
         let button = document.createElement("button");
         button.className = 'dayButton';
-        body.appendChild(button);
-        button.innerHTML = element.Date.split("-").join(",").split("T")[0].split(",")[2];
+        header.appendChild(button);
+        button.innerHTML = element.Date.split("-").join(",").split("T")[0].split(",")[2] + " " + numberToMonth[element.Date.split("-").join(",").split("T")[0].split(",")[1]];
     });
 };
 
