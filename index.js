@@ -60,7 +60,7 @@ dateRender();
 function createTempIcon(minimum, maximum) {
     let paragraph = document.getElementById('temperature');
     let tempIcon = document.createElement('img');
-    tempIcon.setAttribute("src", "thermometer.png")
+    tempIcon.setAttribute("src", "images/thermometer.png")
     paragraph.innerHTML =  "Min: " + minimum + "°C " + " Max: " + maximum + "°C"
     paragraph.appendChild(tempIcon)
 }
@@ -69,7 +69,7 @@ function createTempIcon(minimum, maximum) {
 function createRainIcon(value, probability) {
     let rainParagraph = document.getElementById("rain");
     let rainIcon = document.createElement("img");
-    rainIcon.setAttribute("src", "rain.png");
+    rainIcon.setAttribute("src", "images/rain.png");
     rainParagraph.innerHTML = "Value: " + value + " mm   Probability: " + probability + "%";
     rainParagraph.appendChild(rainIcon);
 }
@@ -78,7 +78,7 @@ function createRainIcon(value, probability) {
 function createWindIcon(speed, direction) {
     let windParagraph = document.getElementById("wind");
     let windIcon = document.createElement("img");
-    windIcon.setAttribute("src", "wind.png");
+    windIcon.setAttribute("src", "images/wind.png");
     windParagraph.innerHTML = "Speed: " + speed + " km/h   Direction: " + direction;
     windParagraph.appendChild(windIcon);
 }
@@ -97,10 +97,9 @@ function iconSorter(weather) {
     const weatherTag = document.getElementById("icons");
     if (weather == "Mostly sunny") {
         weatherTag.className = "sunny";
-    } else if (weather == "Intermittent clouds" || "Partly sunny w/ showers") {
+    } else if (weather == "Intermittent clouds" || "Partly sunny w/ showers" || "Mostly cloudy w/ showers" || "Mostly cloudy") {
         weatherTag.className = "cloudy";
-    } else if (weather == "Mostly cloudy w/ showers" || "Mostly cloudy") {
-        weatherTag.className = "cloudy";
+        console.log(weather)
     } else if (weather == "Showers") {
         weatherTag.className = "rainy";
     } else 
