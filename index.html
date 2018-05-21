@@ -9,37 +9,117 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous">
+    
 </head>
-<body>
-    <h2>Get Your Umbrella!</h2>
+<body>  
+
     <div id="header"></div>
+    <div class="forecast-table">
+        <div class="container">
+            <div class="forecast-container">
+                <div class="today forecast">
+                    <div class="forecast-header">
+                        <div class="day">Monday</div>
+                        <div class="date">6 Oct</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="location">New York</div>
+                        <div class="degree"><sup>o</sup></div>
+                            <div>
+                            <div class="num minDegree">23<sup>o</sup>C</div>
+                            <div class="forecast-icon">
+                                <img src="images/icons/icon-1.svg" alt="" width=90>
+                            </div>
+                        </div>
+                        <span class="rain"></span>
+                        <span class="speed"></span>
+                        <span class="direction"></span>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div class="day"></div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img src="images/icons/icon-3.svg" alt="" width=48>
+                        </div>
+                        <div class="degree"><sup>o</sup>C</div>
+                        <small class="minDegree"><sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div class="day"></div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img src="images/icons/icon-5.svg" alt="" width=48>
+                        </div>
+                        <div class="degree"><sup>o</sup>C</div>
+                        <small class="minDegree"><sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div class="day"></div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img src="images/icons/icon-7.svg" alt="" width=48>
+                        </div>
+                        <div class="degree"><sup>o</sup>C</div>
+                        <small class="minDegree"><sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div class="day">Friday</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img src="images/icons/icon-12.svg" alt="" width=48>
+                        </div>
+                        <div class="degree"><sup>o</sup>C</div>
+                        <small class="minDegree"><sup>o</sup></small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div id="icons"></div>
-    <script src="index.js"></script>
+
     <div class="details">
         <p id="temperature"></p>
         <p id="rain"></p>
         <p id="wind"></p>
     </div>
-    <div class="flex">
-        <a href="https://www.youtube.com/channel/UCMNpUaHHLafxuU1QzLh9FGQ" target="_blank">
-          <i class="fa fa-youtube"></i>
-        </a>
-      </div>
-      <div class="flex">
-        <a href="https://twitter.com/peterkeller0" target="_blank">
-          <i class="fa fa-twitter"></i>
-        </a>
-      </div>
-      <div class="flex">
-        <a href="https://www.linkedin.com/in/keller-peter/" target="_blank">
-          <i class="fa fa-linkedin"></i>
-        </a>
-      </div>
-      <div class="flex">
-        <a href="https://github.com/peter-keller" target="_blank">
-          <i class="fa fa-github"></i>
-        </a>
-      </div>
+    <sub>subscript here</sub>
+
+    <div class="socialmedia">
+        <div class="flex">
+            <a href="https://www.youtube.com/channel/UCMNpUaHHLafxuU1QzLh9FGQ" target="_blank">
+            <i class="fa fa-youtube"></i>
+            </a>
+        </div>
+        <div class="flex">
+            <a href="https://twitter.com/peterkeller0" target="_blank">
+            <i class="fa fa-twitter"></i>
+            </a>
+        </div>
+        <div class="flex">
+            <a href="https://www.linkedin.com/in/keller-peter/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+            </a>
+        </div>
+        <div class="flex">
+            <a href="https://github.com/peter-keller" target="_blank">
+            <i class="fa fa-github"></i>
+            </a>
+        </div>
+    </div>
+    <script src="index.js"></script>
 
 
 </body>
