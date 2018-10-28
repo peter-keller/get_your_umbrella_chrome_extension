@@ -4,7 +4,7 @@ const header = document.getElementById("header");
 
 const ipStackKey = "5bbd3d01ffb7673da9dcd7dc22d800f3";
 const accuWeatherKey = "9AI2zAYeN5HsQmwlLyHxvtS4RPTOK1Cb";
-
+/*
 const coordinates = new XMLHttpRequest();
 coordinates.open(
   "GET",
@@ -17,7 +17,30 @@ let ipStackResponse = JSON.parse(coordinates.response);
 let locationCoordinates = `${ipStackResponse.latitude}%2C${
   ipStackResponse.longitude
 }`;
-var cityResponse;
+*/
+getCoord = async () => {
+  const response = await fetch(
+    `http://api.ipstack.com/check?access_key=${ipStackKey}`
+  );
+
+  const json = await response.json();
+  getCity(`${json.latitude}%2C${json.longitude}`);
+};
+getCoord();
+
+getCity = async param => {
+  console.log(
+    `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${accuWeatherKey}&q=${param}&details=true&toplevel=true`
+  );
+  const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=
+    ${accuWeatherKey}
+    &q=
+    ${param}
+    &details=true&toplevel=true`);
+  const json = await response.json();
+  console.log(json);
+};
+
 fetch(
   `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=
     ${accuWeatherKey}
@@ -26,7 +49,7 @@ fetch(
     &details=true&toplevel=true`
 ).then(function(response) {
   Promise.resolve(response.json()).then(result => {
-    cityResponse = result;
+    window.cityResponse = result;
   });
 });
 
